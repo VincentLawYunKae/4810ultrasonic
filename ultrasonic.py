@@ -82,15 +82,15 @@ try:
             print(data_range)
             median_data = time_list[i][median_index-data_range:median_index+data_range+1]
             median_avg = sum(median_data) / len(median_data)
-            ultra_distance = max(tank_height_list[i], round(median_avg* 17150, 2)) # distance detected by ultrasonic sensor
-            print (f"Distance tank {i}:",ultra_distance,"cm")
-            # fullness = round((tank_height_list[i]-ultra_distance)/tank_height_list[i]*100,2)
-            # print(f"Fullness tank {i}: {fullness}")
-            print(f"Sending data tank {i} to ThingSpeak")
+            ultra_distance = min(tank_height_list[i], round(median_avg* 17150, 2)) # distance detected by ultrasonic sensor
+            print (f"Distance tank {i+1}:",ultra_distance,"cm")
+            fullness = round((tank_height_list[i]-ultra_distance)/tank_height_list[i]*100,2)
+            print(f"Fullness tank {i+1}: {fullness}")
+            print(f"Sending data tank {i+1} to ThingSpeak")
             RequestToThingspeak = f'https://api.thingspeak.com/update?api_key={write_api_list[i]}&field1='
             RequestToThingspeak += str(ultra_distance)
             request = requests.get(RequestToThingspeak)
-            print(request.text)
+            print(f"Sending data tank {i+1} to ThingSpeak: {request.text}\n")    # print(request.text)
             
         print("Waiting 15 seconds before next measurement")
         end_time = time.time()
