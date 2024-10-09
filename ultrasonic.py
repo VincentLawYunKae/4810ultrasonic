@@ -58,7 +58,7 @@ try:
     
     while True:
         start_time = time.time()    # this is for controlling the timing
-        print (f"Start measuring distance for tank {i}")
+        print (f"Start new round of measuring distance")
         time_list: list[list[float]] = [[] for _ in range(num_tank)]
         
         for i in range(10):
