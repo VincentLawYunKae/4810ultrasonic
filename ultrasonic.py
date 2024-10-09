@@ -80,9 +80,9 @@ try:
             median_index = int(0.5*len(time_list[i]))
             data_range = int(0.2*len(time_list[i])/2)     # 20% of the data range
             print(data_range)
-            median_10_data = time_list[i][median_index-data_range:median_index+data_range]
-            median_10_avg = sum(median_10_data) / len(median_10_data)
-            ultra_distance = max(tank_height_list[i], round(median_10_avg* 17150, 2)) # distance detected by ultrasonic sensor
+            median_data = time_list[i][median_index-data_range:median_index+data_range+1]
+            median_avg = sum(median_data) / len(median_data)
+            ultra_distance = max(tank_height_list[i], round(median_avg* 17150, 2)) # distance detected by ultrasonic sensor
             print (f"Distance tank {i}:",ultra_distance,"cm")
             # fullness = round((tank_height_list[i]-ultra_distance)/tank_height_list[i]*100,2)
             # print(f"Fullness tank {i}: {fullness}")
