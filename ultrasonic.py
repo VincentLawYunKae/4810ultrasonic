@@ -88,6 +88,7 @@ try:
             print(f"Fullness tank {i+1}: {fullness}")
             print(f"Sending data tank {i+1} to ThingSpeak")
             RequestToThingspeak = f'https://api.thingspeak.com/update?api_key={write_api_list[i]}&field1='
+            print(f"RequestToThingspeak: {RequestToThingspeak}")
             RequestToThingspeak += str(ultra_distance)
             request = requests.get(RequestToThingspeak)
             print(f"Sending data tank {i+1} to ThingSpeak: {request.text}\n")    # print(request.text)
