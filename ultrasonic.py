@@ -76,8 +76,10 @@ try:
         
         for i in range(num_tank):
             time_list[i] = remove_outlier(time_list[i])    # sort the time list and remove outlier
+            print(time_list[i])
             median_index = int(0.5*len(time_list[i]))
             data_range = int(0.2*len(time_list[i]))/2     # 20% of the data range
+            print(data_range)
             median_10_data = time_list[i][median_index-data_range:median_index+data_range]
             median_10_avg = sum(median_10_data) / len(median_10_data)
             ultra_distance = max(tank_height_list[i], round(median_10_avg* 17150, 2)) # distance detected by ultrasonic sensor
